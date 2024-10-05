@@ -1,0 +1,81 @@
+{
+  "title": "OPEN PLAY TEST",
+  "startDate": "4 OCT 2024",
+  "endDate": "TBA",
+  "prizes": [
+    {
+      "position": 1,
+      "prize": "$TBA"
+    },
+    {
+      "position": 2,
+      "prize": "$TBA"
+    },
+    {
+      "position": 3,
+      "prize": "$TBA"
+    }
+  ],
+  "scores": [
+    {
+      "name": "empty",
+      "score": 0,
+      "ethereumAddress": "0x301afad8e8c4d5d32d18846f98fdabb26e86faa0",
+      "position": 1
+    },
+    {
+      "name": "empty",
+      "score": 0,
+      "ethereumAddress": "0x301afad8e8c4d5d32d18846f98fdabb26e86faa0",
+      "position": 2
+    },
+    {
+      "name": "empty",
+      "score": 0,
+      "ethereumAddress": "0x301afad8e8c4d5d32d18846f98fdabb26e86faa0",
+      "position": 3
+    },
+    {
+      "name": "empty",
+      "score": 0,
+      "ethereumAddress": "0x301afad8e8c4d5d32d18846f98fdabb26e86faa0",
+      "position": 4
+    },
+    {
+      "name": "empty",
+      "score": 0,
+      "ethereumAddress": "0x301afad8e8c4d5d32d18846f98fdabb26e86faa0",
+      "position": 5
+    },
+    {
+      "name": "empty",
+      "score": 0,
+      "ethereumAddress": "0x301afad8e8c4d5d32d18846f98fdabb26e86faa0",
+      "position": 6
+    },
+    {
+      "name": "empty",
+      "score": 0,
+      "ethereumAddress": "0x301afad8e8c4d5d32d18846f98fdabb26e86faa0",
+      "position": 7
+    },
+    {
+      "name": "empty",
+      "score": 0,
+      "ethereumAddress": "0x301afad8e8c4d5d32d18846f98fdabb26e86faa0",
+      "position": 8
+    },
+    {
+      "name": "empty",
+      "score": 0,
+      "ethereumAddress": "0x301afad8e8c4d5d32d18846f98fdabb26e86faa0",
+      "position": 9
+    },
+    {
+      "name": "empty",
+      "score": 0,
+      "ethereumAddress": "0x301afad8e8c4d5d32d18846f98fdabb26e86faa0",
+      "position": 10
+    }
+  ]
+}

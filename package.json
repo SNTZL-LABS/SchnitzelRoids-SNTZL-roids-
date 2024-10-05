@@ -1,0 +1,16 @@
+{
+  "name": "multiplayer-sntzl-roids",
+  "version": "0.0.15",
+  "description": "Multiplayer SNTZL-roids game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:prod": "pm2 start server.js --name multiplayer-sntzl-roids",
+    "stop:prod": "pm2 stop multiplayer-sntzl-roids",
+    "restart:prod": "pm2 restart multiplayer-sntzl-roids"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.3.1"
+  }
+}

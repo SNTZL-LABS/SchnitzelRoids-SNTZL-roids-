@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCHNITZEL-ROIDS</title>
+    <link rel="preload" href="fonts/Press_Start_2P/PressStart2P-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="backgroundCanvas"></canvas>
+    <!-- New buttons moved outside of game container -->
+    <button id="sntzl-button" class="game-button"><img src="images/BUTTONS_SNTZL.png" alt="SNTZL"></button>
+    <button id="info-button" class="game-button"><img src="images/BUTTONS_INFO.png" alt="INFO"></button>
+    <div id="message-container" style="display: none;"></div>
+    <div id="logo-container">
+        <a href="https://schnitzelcoin.net/" target="_blank" rel="noopener noreferrer" id="logo-link">
+            <img src="images/FRONT LOGO.png" alt="Game Logo" id="game-logo">
+        </a>
+    </div>
+    <div id="login-form">
+        <h2>Enter Name</h2>
+        <form id="player-form">
+            <input type="text" id="player-name" class="centered-input" placeholder="Your name" required autocomplete="off">
+            <button type="button" id="connect-metamask">Connect MetaMask (optional)</button>
+            <p id="ethereum-address"></p>
+            <button type="submit">PLAY</button>
+        </form>
+    </div>
+
+    <div id="login-footer">
+       <p>
+            <a href="terms-of-service.html" target="_blank">Legal Disclaimer and Terms of Service</a> |
+            <a href="privacy-policy.html" target="_blank">Privacy Policy</a>
+        </p>
+        <p><a href="terms-of-service.html" target="_blank">Connecting Your Metamaskwallet With You Ethereum Address Allows You To Submit Your High-score To The Leaderboard & Win Prizes</a></p>
+        <p>By participating in the Game, you acknowledge that you have read, understood, and agree to be bound by the Legal Disclaimer and Terms of Service</p>
+    </div>
+
+    <div id="loading-message" style="display: none;">Loading game...</div>
+
+    <div id="game-container" style="display: none;">
+        <canvas id="gameCanvas"></canvas>
+        <div id="minimap"></div>
+        <div id="score">Score: <span id="score-value">0</span></div>
+        <div id="active-players-board">
+            <h3>Active Players</h3>
+            <ol id="active-players-list"></ol>
+        </div>
+    </div>
+
+    <!-- Updated death popup container -->
+    <div id="death-popup" style="display: none;">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>GAME OVER</h2>
+            </div>
+            <div class="popup-score">
+                <p>Your score: <span id="final-score"></span></p>
+            </div>
+            <div class="popup-highscores">
+                <h3>HIGH SCORES</h3>
+                <ol id="high-scores-list"></ol>
+                <a href="#" id="expand-highscores">expand</a>
+            </div>
+            <div class="popup-buttons">
+                <button id="connect-metamask-popup" class="connect-metamask-button">Connect MetaMask</button>
+                <button id="restart-button" class="go-button">GO</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- New popups -->
+    <div id="sntzl-popup" class="custom-popup" style="display: none;">
+        <div class="popup-content">
+            <h2>SNTZL</h2>
+            <div id="sntzl-popup-content"></div>
+            <button class="close-popup">Close</button>
+        </div>
+    </div>
+
+    <div id="info-popup" class="custom-popup" style="display: none;">
+        <div class="popup-content">
+            <h2>INFO</h2>
+            <div id="info-popup-content"></div>
+            <button class="close-popup">Close</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <!-- JavaScript files -->
+    <script src="player-renderer.js"></script>
+    <script src="asteroid-renderer.js"></script>
+    <script src="bullet-renderer.js"></script>
+    <script src="ui-renderer.js"></script>
+    <script src="minimap-renderer.js"></script>
+    <script src="background-renderer.js"></script>
+    <script src="game-renderer.js"></script>
+    <script src="input-handler.js"></script>
+    <script src="network-handler.js"></script>
+    <script src="hitmarker.js"></script>
+    <!-- New split UI handler files -->
+    <script src="CanvasManager.js"></script>
+    <script src="PlayerManager.js"></script>
+    <script src="PopupManager.js"></script>
+    <script src="MessageManager.js"></script>
+    <!-- Main game client file -->
+    <script src="game-client.js"></script>
+</body>
+</html>

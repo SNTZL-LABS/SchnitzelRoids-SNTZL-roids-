@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Scores</title>
+    <link rel="preload" href="fonts/Press_Start_2P/PressStart2P-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #0b0006;
+            color: #fff;
+            font-family: 'PressStart2P', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgba(11, 0, 6, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ffeab0;
+            max-width: 900px;
+            width: 100%;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+        }
+        h2 {
+            text-align: center;
+            color: #ffeab0;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+        .date-range {
+            text-align: center;
+            font-size: 0.8em;
+            margin-top: 5px;
+            color: #aaa;
+        }
+        .table-container {
+            overflow-y: auto;
+            margin-top: 20px;
+            flex-grow: 1;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+        tr:nth-child(even) {
+            background-color: rgba(174, 174, 174, 0.1);
+        }
+        .metamask-icon {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+        /* Center-align the prize and rank columns */
+        td:first-child,
+        td:nth-child(2) {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HIGH SCORES</h1>
+        <h2 id="high-scores-title"></h2>
+        <div class="date-range" id="high-scores-date-range"></div>
+        <div class="table-container">
+            <table id="full-high-scores-table">
+                <tbody id="full-high-scores-list"></tbody>
+            </table>
+        </div>
+    </div>
+    <div id="login-footer">
+         <p>
+             <a href="terms-of-service.html" target="_blank">Legal Disclaimer and Terms of Service</a> |
+             <a href="privacy-policy.html" target="_blank">Privacy Policy</a>
+         </p>
+        <p>participating in the Game, you acknowledge that you have read, understood, and agree to be bound by the Legal Disclaimer and Terms of Service</p>
+     </div>
+    <script>
+        fetch('/api/full-highscores')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('high-scores-title').textContent = data.title;
+                document.getElementById('high-scores-date-range').textContent = `${data.startDate} - ${data.endDate}`;
+                
+                const highScoresList = document.getElementById('full-high-scores-list');
+                highScoresList.innerHTML = data.scores.map((score) => {
+                    const prize = data.prizes.find(p => p.position === score.position);
+                    return `
+                    <tr>
+                        <td style="text-align: center;">${prize ? prize.prize : ' '}</td>
+                        <td style="text-align: center;">${score.position}.</td>
+                        <td>${score.ethereumAddress ? '<span class="metamask-icon">🦊</span>' : ''}${score.name}</td>
+                        <td style="text-align: right;">${score.score}</td>
+                    </tr>
+                `}).join('');
+            })
+            .catch(error => {
+                // Error handling could be improved here, e.g., displaying an error message to the user
+            });
+    </script>
+</body>
+</html>
